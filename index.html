@@ -837,13 +837,7 @@
 
         var WISHES = ["May every wish you make come true, my love ♥", "I wished for you, again ♥", "My wish is a lifetime with you ♥"];
         // gallery
-        var tilts = [-3, 2, -1.5, 3, -2.5, 1.5], cur = null;
-        PHOTOS.forEach(function (ph, i) {
-            var f = document.createElement('figure'); f.className = 'pol'; f.tabIndex = 0; f.style.setProperty('--t', tilts[i % 6] + 'deg');
-            f.innerHTML = '<div class="ph">' + (ph.src ? '<img alt="' + ph.cap + '" src="' + ph.src + '">' : '♥') + '</div>';
-            var go = function () { var im = f.querySelector('img'); if (im) { $('lbi').src = im.src; $('lbc').textContent = ph.cap; $('lb').classList.add('on') } else { cur = f; $('pick').click() } };
-            f.onclick = go; f.onkeydown = function (e) { if (e.key === 'Enter') { go() } }; $('gal').appendChild(f)
-        });
+
         $('lb').onclick = function () { $('lb').classList.remove('on') };
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('lb').classList.remove('on') });
         $('pick').onchange = function (e) {
