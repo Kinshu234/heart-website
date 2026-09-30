@@ -731,17 +731,14 @@
             </div>
         </section>
 
-        <section>
-            <h2 class="script reveal">Our little moments</h2>
-            <p class="reveal" style="opacity:.75;margin:0">Tap a photo</p>
-            <div class="gal" id="gal"></div>
-        </section>
+
 
         <section>
             <h2 class="script reveal">Why I love you</h2>
             <p class="reveal" style="opacity:.75;margin:0">Tap each heart</p>
             <div class="reasons reveal" id="reasons"></div>
         </section>
+
 
 
         <section>
@@ -834,15 +831,15 @@
 
         // Photos: add as {src:"data:image/jpeg;base64,...", cap:"Our first trip"}; leave src empty for a placeholder
         var PHOTOS = [
-            { src: "pic1.jpg", cap: "" }, { src: "pic2.jpg", cap: "" },
-            { src: "pic3.jpg", cap: "" }, { src: "pic4.jpg", cap: "" }
+            { src: "", cap: "Our first date" }, { src: "", cap: "Just us" }, { src: "", cap: "Adventure day" },
+            { src: "", cap: "Your best smile" }, { src: "", cap: "Late night laughs" }, { src: "", cap: "Forever starts here" }
         ];
         var WISHES = ["May every wish you make come true, my love ♥", "I wished for you, again ♥", "My wish is a lifetime with you ♥"];
         // gallery
         var tilts = [-3, 2, -1.5, 3, -2.5, 1.5], cur = null;
         PHOTOS.forEach(function (ph, i) {
             var f = document.createElement('figure'); f.className = 'pol'; f.tabIndex = 0; f.style.setProperty('--t', tilts[i % 6] + 'deg');
-            f.innerHTML = '<div class="ph">' + (ph.src ? '<img alt="' + ph.cap + '" src="' + ph.src + '">' : '♥') + '</div>';
+            f.innerHTML = '<div class="ph">' + (ph.src ? '<img alt="' + ph.cap + '" src="' + ph.src + '">' : '♥') + '</div><figcaption>' + ph.cap + '</figcaption>';
             var go = function () { var im = f.querySelector('img'); if (im) { $('lbi').src = im.src; $('lbc').textContent = ph.cap; $('lb').classList.add('on') } else { cur = f; $('pick').click() } };
             f.onclick = go; f.onkeydown = function (e) { if (e.key === 'Enter') { go() } }; $('gal').appendChild(f)
         });
